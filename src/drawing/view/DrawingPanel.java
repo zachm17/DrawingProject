@@ -58,7 +58,7 @@ public class DrawingPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
-		this.setBackground(Color.BLUE);
+		this.setBackground(Color.WHITE);
 		this.add(drawButton);
 		this.setPreferredSize(new Dimension(525, 540));
 		
@@ -125,7 +125,7 @@ public class DrawingPanel extends JPanel
 		
 		for (Rectangle current : rectangleList)
 		{
-			int randomStroke = (int)(Math.random() * 7);
+			int randomStroke = (int)(Math.random() * 15);
 			int red = (int)(Math.random() * 256);
 			int green = (int)(Math.random() * 256);
 			int blue = (int)(Math.random() * 256);
@@ -133,6 +133,8 @@ public class DrawingPanel extends JPanel
 			mainGraphics.setStroke(new BasicStroke(randomStroke));
 			
 			mainGraphics.fill(current);
+		
+			
 		}
 	}
 }
