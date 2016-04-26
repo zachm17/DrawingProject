@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
 import drawing.controller.DrawingController;
@@ -28,7 +27,9 @@ public class DrawingPanel extends JPanel
 	private SpringLayout baseLayout;
 	private ShapePanel shapePanel;
 	private JButton drawButton;
+	private JButton clearButton;
 	private ArrayList<Rectangle> rectangleList;
+	
 	
 	
 	public DrawingPanel(DrawingController baseController)
@@ -36,7 +37,12 @@ public class DrawingPanel extends JPanel
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
 		drawButton = new JButton("Draw the rectangle");
+		clearButton = new JButton("Clear");
+		shapePanel = new ShapePanel();
+		
+		
 		rectangleList = new ArrayList<Rectangle>();
+		
 		
 		
 		
@@ -58,9 +64,11 @@ public class DrawingPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
-		this.setBackground(Color.WHITE);
+		this.setBackground(Color.GRAY);
 		this.add(drawButton);
 		this.setPreferredSize(new Dimension(525, 540));
+		this.add(shapePanel);
+		this.add(clearButton);
 		
 		
 		
@@ -70,9 +78,12 @@ public class DrawingPanel extends JPanel
 	
 	private void setupLayout()
 	{
-		baseLayout.putConstraint(SpringLayout.SOUTH, drawButton, -110, SpringLayout.SOUTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, drawButton, -133, SpringLayout.EAST, this);
-
+		baseLayout.putConstraint(SpringLayout.EAST, drawButton, -38, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, drawButton, -33, SpringLayout.NORTH, shapePanel);
+		baseLayout.putConstraint(SpringLayout.NORTH, shapePanel, 273, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, shapePanel, 46, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, shapePanel, -27, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, shapePanel, -54, SpringLayout.EAST, this);
 	}
 	
 	private void setupListeners()
@@ -81,16 +92,27 @@ public class DrawingPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				int xPosition = (int)(Math.random() * 600);
-				int yPosition = (int)(Math.random() * 600);
-				int width = (int)(Math.random() * 50);
-				int height = (int)(Math.random() * 50);
+				//int xPosition = (int)(Math.random() * 600);
+			//	int yPosition = (int)(Math.random() * 600);
+			//	int width = (int)(Math.random() * 50);
+				//int height = (int)(Math.random() * 50);
 				
-				rectangleList.add(new Rectangle(xPosition, yPosition, width, height));
+				//triangleList.add//(new Triangle(xPosition, yPosition, width, height));
+				shapePanel.addTriangle();
 				repaint();
 			}
 		});
 	}
+		
+		//drawCircleButton.addActionListener(new ActionListener()
+		//{
+		//	public void actionPerformed(ActionEvent click)
+		//	{
+		//		shapePanel.addCircle();
+	//			repaint();
+	//		}
+	//	});
+	//}
 	
 	
 	
