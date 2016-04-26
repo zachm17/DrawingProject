@@ -90,6 +90,7 @@ public class ShapePanel extends JPanel
 		
 		Polygon myPolygon = new Polygon(xPoints, yPoints, numberOfSides);
 		polygonList.add(myPolygon);
+		repaint();
 		
 	}
 	
@@ -129,6 +130,7 @@ public class ShapePanel extends JPanel
 			
 			
 			mainGraphics.fill(current);
+			repaint();
 		}
 	}
 	

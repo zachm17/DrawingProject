@@ -104,38 +104,9 @@ public class DrawingPanel extends JPanel
 		});
 	}
 		
-		//drawCircleButton.addActionListener(new ActionListener()
-		//{
-		//	public void actionPerformed(ActionEvent click)
-		//	{
-		//		shapePanel.addCircle();
-	//			repaint();
-	//		}
-	//	});
-	//}
+		
 	
 	
-	
-	/**
-	 * private void setupListeners()
-	
-	{
-		sortButton.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent click)
-			{
-				baseController.insertionSort();
-				
-				String temp = "The sorted contents are \n";
-				for(CoolThing current : baseController.getCoolThings())
-				{
-					temp += current.toString() + "\n";
-				}
-				textArea.setText(baseController.showCoolLevels());
-				textArea.setText(temp);
-			}
-		});
-	 }*/
 
 	protected void paintComponent(Graphics currentGraphics)
 	{
@@ -143,11 +114,11 @@ public class DrawingPanel extends JPanel
 		Graphics2D mainGraphics = (Graphics2D)currentGraphics;
 		mainGraphics.setColor(Color.GREEN);
 		mainGraphics.setStroke(new BasicStroke(15));
-		mainGraphics.draw(new Rectangle(10,10,20,40));
+		mainGraphics.draw(new Rectangle(90,10,20,40));
 		
 		for (Rectangle current : rectangleList)
 		{
-			int randomStroke = (int)(Math.random() * 15);
+			int randomStroke = (int)(Math.random() * 7);
 			int red = (int)(Math.random() * 256);
 			int green = (int)(Math.random() * 256);
 			int blue = (int)(Math.random() * 256);
