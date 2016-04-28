@@ -44,18 +44,11 @@ public class DrawingPanel extends JPanel
 		drawButton = new JButton("Draw the rectangle");
 		circleButton = new JButton("Draw the circle");
 		triangleButton = new JButton("Draw the triangle");
-		
 		polygonButton = new JButton("Draw the polygon");
-		
 		ellipseButton = new JButton("Draw the ellipse");
-		
 		squareButton = new JButton("Draw the sqaure");
-		
 		clearButton = new JButton("Clear");
 		shapePanel = new ShapePanel();
-		
-		
-		
 		rectangleList = new ArrayList<Rectangle>();
 		
 		
@@ -169,6 +162,15 @@ public class DrawingPanel extends JPanel
 		{
 			shapePanel.addPolygon();
 			repaint();
+		}
+	});
+	
+	clearButton.addActionListener(new ActionListener()
+	{
+		public void actionPerformed(ActionEvent click)
+		{
+			shapePanel.clear();
+			
 		}
 	});
 	
