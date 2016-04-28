@@ -181,7 +181,9 @@ public class DrawingPanel extends JPanel
 	
 	
 
-	protected void paintComponent(Graphics currentGraphics)
+	/**
+	 * protected void paintComponent(Graphics currentGraphics)
+	 
 	{
 		super.paintComponent(currentGraphics);
 		Graphics2D mainGraphics = (Graphics2D)currentGraphics;
@@ -200,9 +202,10 @@ public class DrawingPanel extends JPanel
 			
 			mainGraphics.fill(current);
 		
-			
+		 
+		 
 		}
-	}
+	}*/
 }
 	
 	

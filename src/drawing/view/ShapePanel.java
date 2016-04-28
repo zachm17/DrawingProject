@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 
@@ -35,6 +36,14 @@ public class ShapePanel extends JPanel
 	
 	public void addRectangle()
 	{
+		int xPoint = (int)(Math.random() * 1000);
+		int yPoint = (int)(Math.random() * 1000);
+		int width = (int)(Math.random() * 100);
+		int height = (int)(Math.random() * 100);
+		
+		Rectangle current = new Rectangle(xPoint, yPoint, width, height);
+		rectangleList.add(current);
+		
 		rectangleList.add(new Rectangle(10, 20, 50, 10));
 		repaint();
 	}
@@ -109,11 +118,20 @@ public class ShapePanel extends JPanel
 	
 	protected void paintComponent(Graphics currentGraphics)
 	{
-		super.paintComponent(currentGraphics);
+		super.paintComponent(currentGraphics); // Have to have this line of code for "protected void" to work
 		
 		Graphics2D mainGraphics = (Graphics2D)currentGraphics;
 		
-		for(Polygon triangle : triangleList)
+		drawShape(mainGraphics, circleList);
+		drawShape(mainGraphics, ellipseList);
+		drawShape(mainGraphics, squareList);
+		drawShape(mainGraphics, polygonList);
+		drawShape(mainGraphics, rectangleList);
+		drawShape(mainGraphics, triangleList);
+		
+	/**
+	 * 	for(Polygon triangle : triangleList)
+	
 		{
 			int randomStroke = (int)(Math.random() * 7);
 			int red = (int)(Math.random() * 256);
@@ -185,6 +203,35 @@ public class ShapePanel extends JPanel
 			mainGraphics.fill(rectangle);
 		}
 		//draw in here
+		 
+		 */
+	}
+	
+	private void drawShape(Graphics2D mainGraphics, ArrayList shapeList)
+	{
+		
+		for(Object currentShape : shapeList)
+		{
+			currentShape = (Shape) currentShape;
+			int red = (int)(Math.random() * 256);
+			int blue = (int)(Math.random() * 256);
+			int green = (int)(Math.random() * 256);
+			int penSize = (int)(Math.random() * 10) + 3;
+			int alpha = (int)(Math.random() * 255);
+			
+			
+			mainGraphics.setColor(new Color(red, green, blue, alpha));
+			mainGraphics.setStroke(new BasicStroke(penSize));
+			if(currentShape instanceof Polygon)
+			{
+				mainGraphics.draw((Shape)currentShape);
+			}
+			else
+			{
+				mainGraphics.fill((Shape)currentShape);
+			}
+		}
+		
 	}
 	
 	public void clear()
